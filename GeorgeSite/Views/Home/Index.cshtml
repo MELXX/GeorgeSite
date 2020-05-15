@@ -10,7 +10,7 @@
     @foreach (var item in Model)
     {
         <div class="card " style="width: 18rem;">
-            <img class="card-img-top" src="@item.ImageUrl" alt="Card image cap">
+            <img class="card-img-top" src="~/@item.ImageUrl" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text text-right">R @item.Price</p>
                 <p class="card-text font-weight-bold">@item.Name</p>

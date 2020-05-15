@@ -48,7 +48,7 @@ namespace GeorgeSite.Controllers
 
             var path = Path.Combine(
                         Directory.GetCurrentDirectory(), @"wwwroot\ClientDocuments",
-                        item.Id + Guid.NewGuid().ToString() + " " + ext);
+                        item.Id + Guid.NewGuid().ToString()+ ext);
 
 
             using (var stream = new FileStream(path, FileMode.CreateNew))
@@ -56,7 +56,7 @@ namespace GeorgeSite.Controllers
                  file.CopyToAsync(stream);
                 
             }
-            item.ImageUrl = path;
+            item.ImageUrl = item.Id + Guid.NewGuid().ToString() + ext;
             Repository.ItemRepository.Create(item);
             Repository.ItemRepository.Save();
             return RedirectToAction("Index","Admin");
