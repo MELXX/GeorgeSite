@@ -1,0 +1,23 @@
+﻿ 
+
+<h1>Payment</h1>
+
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<title>Payment</title>
+<div>
+    <form asp-controller="Payment" asp-action="Processing" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_OSrEz3wGfTm1hR2RtQaMNn6m00Z5yAGwv0"
+                data-amount="666"
+                data-name="gift card"
+                data-description="gift card purchase"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="en"
+                data-zip-code="true"
+                data-label="Pay 666">
+        </script>
+    </form>
+</div>

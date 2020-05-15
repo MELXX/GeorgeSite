@@ -1,0 +1,48 @@
+﻿@model GeorgeSite.Models.Entities.ShoppingCart
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Price
+            </th>>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                @*<td>
+                    <a asp-controller="Transaction" asp-action="Payment" asp-route-id="@item.Id">Payment</a> |
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-controller="Payment" asp-action="Payment" asp-route-id="@Model.UserId">
+<div class="form-group">
+    <input type="submit" value="Payment" class="btn btn-primary" />
+</div>
+</form>

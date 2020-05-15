@@ -1,0 +1,22 @@
+﻿@model IEnumerable<GeorgeSite.Models.Entities.Item>
+@{
+    ViewData["Title"] = "Search results";
+}
+
+<h1 class="text-center">search results for ' @ViewBag.search_term '</h1>
+
+
+<div class="card-group">
+    @foreach (var item in Model)
+    {
+        <div class="card border-info" style="width: 18rem;">
+            @*<img class="card-img-top" src="@item.Image" alt="Card image cap">*@
+            <div class="card-body">
+                <p class="card-text text-right">R @item.Price</p>
+                <p class="card-text font-weight-bold">@item.Name</p>
+                <p class="card-text">@item.Description</p>
+            </div>
+        </div>
+    }
+</div>
+
