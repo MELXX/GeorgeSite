@@ -68,5 +68,16 @@ namespace GeorgeSite.Controllers
         //{
         //    return View();
         //}
+
+       
+        [HttpGet]
+        public IActionResult ClearCart(int id)
+        {
+
+            var i = _userManager.FindByEmailAsync(User.Identity.Name).Result;
+            var cart = CartCollection.shoppingCarts.Where(s => s.UserId == i.Id).FirstOrDefault();
+            CartCollection.shoppingCarts.Remove(cart);
+             return RedirectToAction("Checkout", "Customer");
+        }
     }
 }
