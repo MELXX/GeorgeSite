@@ -12,7 +12,7 @@
     <link asp-href-include="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
     <link asp-href-include="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link asp-fallback-href-include="/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link asp-href-include="/lib/font-awesome/css/all.css" rel="stylesheet" />
     <!--Custom CSS-->
     <link asp-href-include="/styles/StyleSheetRow.css" rel="stylesheet" />
 
@@ -80,7 +80,7 @@
         @RenderBody()
     </div>
     <div class="border-top footer text-muted">
-        <div class="container">
+        <div class="container text-center">
             &copy; @DateTime.Now.Year.ToString()  - GeorgeSite
         </div>
     </div>
