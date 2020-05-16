@@ -63,7 +63,7 @@ namespace GeorgeSite.Controllers
                     loginModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return Redirect(loginModel?.ReturnUrl ?? "/Home/Index");
+                        return Redirect("/Home/Index");
                     }
                 }
             }
