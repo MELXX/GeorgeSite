@@ -31,21 +31,37 @@
                 data-target="#MyNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="MyNavbar">
 
             @if (User.Identity.IsAuthenticated)
             {
+                <!-- Search funtionality-->
                 <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Search">
                     <div class="form-group">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </div>
-
                 </form>
+                <!-- Nav Links-->
                 <ul class="navbar-nav ml-auto text-left">
-                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
+                    <li class="User nav-link text-primary">Welcome, @User.Identity.Name </li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
+                    @if (User.IsInRole("Admins"))
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Create" style="color:white">Create</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index" style="color:white">Items</a></li>
+                    }
+                    else
+                    {
+                        <!-- Regular user -->
+                        @*<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>*@
+
+                    }
                     <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
                 </ul>
             }
             else
