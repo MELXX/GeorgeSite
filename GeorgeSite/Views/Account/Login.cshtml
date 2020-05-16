@@ -2,9 +2,50 @@
     Layout = "_Layout";
 }
 @model LoginViewModel
+<div class="Welcome">
+    <div class="container p-5">
+        <div id="card" class="card mb-3">
+            <div class="row no-gutters">
+                <!-- Side Image-->
+                <div class="col-md-4">
+                    <img src="~/images/LoginSideImg.jpg" class="card-img" alt="Login" style="height:100%;">
+                </div>
+                <!-- //Side Image-->
+                <!-- Login form-->
+                <div class="col-md-8 text-white">
+                    <div class="card-body">
+                        <h5 class="card-title display-4">LOGIN</h5>
+
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <form asp-action="Login" asp-controller="Account" method="post">
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                            <div class="form-group">
+                                <span class="fa fa-envelope" style="color: seagreen"></span>
+                                <label asp-for="Email"></label>
+                                <div><span asp-validation-for="Email" class="text-danger"></span></div>
+                                <input id="input" type="text" asp-for="Email" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <span class="fa fa-user-lock" style="color: seagreen"></span>
+                                <label asp-for="Password"></label>
+                                <div><span asp-validation-for="Password" class="text-danger"></span></div>
+                                <input id="input" asp-for="Password" class="form-control" />
+                            </div>
+
+                            <button class="btn btn-primary text-center" type="submit" style="width:100%;">Log In</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- //Login form-->
+            </div>
+        </div>
+    </div>
+</div>
 
 
-    <div class="col-lg-auto">
+@*<div class="col-lg-auto">
         <h1>Login</h1>
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <form asp-action="Login" asp-controller="Account" method="post">
@@ -25,4 +66,4 @@
             <button class="btn btn-primary" type="submit">Log In</button>
         </form>
         <br />
-    </div>
+    </div>*@
