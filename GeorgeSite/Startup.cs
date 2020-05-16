@@ -23,17 +23,20 @@ namespace GeorgeSite
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
+            
+            services.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
-            services.AddMvc();
-            services.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
+            
             services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<IdentityDbContext>()
-        .AddDefaultTokenProviders();
-            services.AddMvc();
+                    .AddEntityFrameworkStores<IdentityDbContext>()
+                    .AddDefaultTokenProviders();
+            
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Password settings.
@@ -46,24 +49,23 @@ namespace GeorgeSite
 
                 //options.Tokens.
             });
+
+            services.AddMvc();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseAuthentication();
-            app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                 name: "default",
-               pattern: "{controller=Account}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Index}/{id?}");
             });
             IdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
-
         }
     }
 }
