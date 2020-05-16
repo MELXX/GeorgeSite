@@ -28,3 +28,27 @@
     .child:nth-child(odd) {
         background-color: orange;
     }
+
+.Welcome {
+    /*height: 100vh;*/
+    background-image: url(/images/welcome.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#card {
+    max-width: 540px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+    background-color: darkslategrey
+}
+
+.form-control {
+    border: 2px solid #2e8b57;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid seagreen;
+}
