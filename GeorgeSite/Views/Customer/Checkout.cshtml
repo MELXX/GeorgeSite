@@ -4,8 +4,9 @@
     ViewData["Title"] = "Checkout";
 }
 
-<h1>Checkout</h1>
-
+<h1 class="text-center">Checkout</h1>
+<br />
+<h1>Total: @Model.Total.ToString("C2")</h1>
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +18,7 @@
             </th>
             <th>
                 Price
-            </th>>
+            </th>
             @*<th></th>*@
         </tr>
     </thead>
@@ -41,8 +42,26 @@
         }
     </tbody>
 </table>
-<form asp-controller="Payment" asp-action="Payment" asp-route-id="@Model.UserId">
-<div class="form-group">
-    <input type="submit" value="Payment" class="btn btn-primary" />
+<div>
+    @if (@Model.Total > 0)
+    {
+        <form asp-controller="Payment" asp-action="Processing" method="POST" enctype="multipart/form-data">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_OSrEz3wGfTm1hR2RtQaMNn6m00Z5yAGwv0"
+                    data-amount="@Model.Total"
+                    data-name="gift card"
+                    data-description="gift card purchase"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="en"
+                    data-zip-code="true"
+                    data-label="Pay @Model.Total.ToString()">
+            </script>
+        </form>
+    }
+
+    <form asp-controller="Customer" asp-action="ClearCart" asp-route-id="@Model.UserId" method="get">
+        <div class="form-group">
+            <input type="submit" value="clear cart" class="btn btn-primary" />
+        </div>
+    </form>
 </div>
-</form>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GeorgeSite.Models.Data;
+using GeorgeSite.Models.Entities;
 using GeorgeSite.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -68,7 +69,7 @@ namespace GeorgeSite.Controllers
                 }
             }
             ModelState.AddModelError("", "Invalid username or password");
-            return  View(loginModel);
+            return View(loginModel);
         }
         [AllowAnonymous]
         [HttpGet]
@@ -78,11 +79,11 @@ namespace GeorgeSite.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerModel )
+        public async Task<IActionResult> Register(RegisterViewModel registerModel)
         {
 
             //get reCAPTHCA key from appsettings.json
-           // ViewData["ReCaptchaKey"] = _configuration.GetSection("GoogleReCaptcha:key").Value;
+            // ViewData["ReCaptchaKey"] = _configuration.GetSection("GoogleReCaptcha:key").Value;
 
             if (ModelState.IsValid)
             {
@@ -145,5 +146,7 @@ namespace GeorgeSite.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using GeorgeSite.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 
@@ -22,7 +23,7 @@ namespace GeorgeSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Processing(string stripeToken, string stripeEmail)
+        public IActionResult Processing(string stripeToken, string stripeEmail, ShoppingCart cart)
         {
             StripeConfiguration.ApiKey = "sk_test_ZxgfYV4PJz2m3gWvKXWFHxmv00XtyoLItH";
 
@@ -31,8 +32,8 @@ namespace GeorgeSite.Controllers
             Metadata.Add("Quantity", "10");
             var options = new ChargeCreateOptions
             {
-                Amount = 6666,
-                Currency = "USD",
+                Amount = Convert.ToInt64(cart.Total),
+                Currency = "ZAR",
                 Description = "Buying 10 rubber ducks",
                 Customer = createCust("sk_test_ZxgfYV4PJz2m3gWvKXWFHxmv00XtyoLItH").Id,//i added
                 //SourceId = stripeToken,

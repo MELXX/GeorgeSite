@@ -30,7 +30,6 @@
     <Folder Include="Migrations\AppDb\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\ClientDocuments\" />
   </ItemGroup>
 
 </Project>
