@@ -63,10 +63,7 @@ namespace GeorgeSite.Controllers
                     loginModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        //if (loginModel.Email.Contains("@"))
-                            return Redirect("/Home/Index");
-                        //else
-                        //    return Redirect("/Admin/Applications");
+                        return Redirect(loginModel?.ReturnUrl ?? "/Home/Index");
                     }
                 }
             }

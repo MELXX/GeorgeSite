@@ -26,60 +26,64 @@
                  alt="SIXTH SENSE" width="30" height="30" />
         </a>
 
-        <!-- Toggler/collapsible Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#MyNavbar">
+        <!--Hamburger menu-->
+        <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="MyNavbar">
+            <!-- Search funtionality-->
+            @*@if (User.Identity.IsAuthenticated)
+                {
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Search">
+                        <div class="form-group">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </div>
+                    </form>
+                }*@
 
-            @if (User.Identity.IsAuthenticated)
-            {
-                <!-- Search funtionality-->
-                <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Search">
-                    <div class="form-group">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </div>
-                </form>
-                <!-- Nav Links-->
-                <ul class="navbar-nav ml-auto text-left">
+            <!-- Nav Links-->
+            <ul class="navbar-nav ml-auto text-left">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <!-- Common links -->
                     <li class="User nav-link text-primary">Welcome, @User.Identity.Name </li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
                     @if (User.IsInRole("Admins"))
                     {
+                        <!-- Admin links -->
                         <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Create" style="color:white">Create</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index" style="color:white">Items</a></li>
+                        <!-- //Admin links -->
                     }
                     else
                     {
-                        <!-- Regular user -->
-                        @*<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>*@
+                        <!-- Regular user links-->
 
+                        <!-- //Regular user links-->
                     }
                     <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
-                </ul>
-            }
-            else
-            {
-                <ul class="navbar-nav ml-auto text-left">
-                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login" style="color:white">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register" style="color:white">Register</a></li>
-                </ul>
-            }
+                    <!-- //Common links -->
+                }
 
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login" style="color:white">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register" style="color:white">Register</a></li>
+                }
+            </ul>
+            <!-- //Nav Links-->
         </div>
     </div>
 
     <div>
         @RenderBody()
     </div>
-    <div class="border-top footer text-muted">
+    <div class="footer text-muted">
         <div class="container text-center">
             &copy; @DateTime.Now.Year.ToString()  - GeorgeSite
         </div>
