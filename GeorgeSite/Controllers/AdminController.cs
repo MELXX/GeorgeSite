@@ -46,21 +46,25 @@ namespace GeorgeSite.Controllers
             if (arr[arr.Length - 1].Contains("jpg"))
                 ext = ".jpg";
 
+            //Define image name (with a single instance of GUID)
+            var ImageName = item.Id + Guid.NewGuid().ToString() + ext;
+            
+            //Set image path
             var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), @"wwwroot\ClientDocuments",
-                        item.Id + Guid.NewGuid().ToString()+ ext);
-
+                       Directory.GetCurrentDirectory(), @"wwwroot\ClientDocuments",
+                       ImageName);
 
             using (var stream = new FileStream(path, FileMode.CreateNew))
             {
                  file.CopyToAsync(stream);
                 
             }
-            item.ImageUrl = item.Id + Guid.NewGuid().ToString() + ext;
+            
+            //Get image url
+            item.ImageUrl = "/ClientDocuments/" + ImageName;
             Repository.ItemRepository.Create(item);
             Repository.ItemRepository.Save();
             return RedirectToAction("Index","Admin");
         }
-
     }
 }
