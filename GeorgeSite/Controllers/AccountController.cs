@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace GeorgeSite.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private UserManager<IdentityUser> _userManager;
@@ -58,18 +59,14 @@ namespace GeorgeSite.Controllers
 
                 if (user != null)
                 {
-
                     var result = await _signInManager.PasswordSignInAsync(user,
                     loginModel.Password, false, false);
                     if (result.Succeeded)
                     {
-
                         //if (loginModel.Email.Contains("@"))
                             return Redirect("/Home/Index");
                         //else
                         //    return Redirect("/Admin/Applications");
-
-
                     }
                 }
             }
@@ -81,7 +78,6 @@ namespace GeorgeSite.Controllers
         public async Task<IActionResult> Register()
         {
             return View();
-
         }
         [AllowAnonymous]
         [HttpPost]
@@ -93,8 +89,6 @@ namespace GeorgeSite.Controllers
 
             if (ModelState.IsValid)
             {
-
-
                 var uemail = context.UserRepository.FindByCondition(s => s.Email == registerModel.Email || s.Phone == registerModel.Phone);
                 if (uemail.Count() > 0)
                 {
@@ -112,7 +106,6 @@ namespace GeorgeSite.Controllers
                     Email = registerModel.Email,
                     UserName = registerModel.Email,
                     PhoneNumber = registerModel.Phone
-
                 };
 
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
@@ -125,7 +118,6 @@ namespace GeorgeSite.Controllers
                         address = registerModel.address,
                         Name = registerModel.Name,
                         Surname = registerModel.Surname,
-
                     };
                     context.UserRepository.Create(user1);
                     context.UserRepository.Save();
@@ -144,14 +136,11 @@ namespace GeorgeSite.Controllers
             }
             else
             {
-
                 ModelState.AddModelError(string.Empty, "Unable to register new user");
             }
 
-
             return View(registerModel);
         }
-
 
         [AllowAnonymous]
         public async Task<IActionResult> Logout()
@@ -159,6 +148,5 @@ namespace GeorgeSite.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
-
     }
 }

@@ -7,10 +7,11 @@ using GeorgeSite.Models.Data;
 using GeorgeSite.Models.Entities;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GeorgeSite.Controllers
 {
-    //[Microsoft.AspNetCore.Authorization.Authorize]
+    [Authorize(Roles = "Admins")]
     public class AdminController : Controller
     {
         IRepositoryWrapper Repository;
@@ -22,7 +23,6 @@ namespace GeorgeSite.Controllers
 
         public IActionResult Index()
         {
-
             return View(Repository.ItemRepository.FindAll());
         }
 
@@ -56,8 +56,7 @@ namespace GeorgeSite.Controllers
 
             using (var stream = new FileStream(path, FileMode.CreateNew))
             {
-                 file.CopyToAsync(stream);
-                
+                 file.CopyToAsync(stream);       
             }
             
             //Get image url
