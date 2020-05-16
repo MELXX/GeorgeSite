@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GeorgeSite.Controllers
 {
-    [Authorize(Roles = "Admins")]
+    //[Authorize(Roles = "Admins")]
     public class AdminController : Controller
     {
         IRepositoryWrapper Repository;
