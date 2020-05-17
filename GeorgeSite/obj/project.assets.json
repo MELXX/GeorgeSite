@@ -8484,11 +8484,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KKW MOKHETHI\\Documents\\Code\\Projects\\Collaborations\\M Mngwenya\\GeorgeSite\\GeorgeSite\\GeorgeSite.csproj",
+      "projectUniqueName": "C:\\Users\\KKW MOKHETHI\\Documents\\Code\\Projects\\Collaborations\\M Mgwenya\\GeorgeSite\\GeorgeSite\\GeorgeSite.csproj",
       "projectName": "GeorgeSite",
-      "projectPath": "C:\\Users\\KKW MOKHETHI\\Documents\\Code\\Projects\\Collaborations\\M Mngwenya\\GeorgeSite\\GeorgeSite\\GeorgeSite.csproj",
+      "projectPath": "C:\\Users\\KKW MOKHETHI\\Documents\\Code\\Projects\\Collaborations\\M Mgwenya\\GeorgeSite\\GeorgeSite\\GeorgeSite.csproj",
       "packagesPath": "C:\\Users\\KKW MOKHETHI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KKW MOKHETHI\\Documents\\Code\\Projects\\Collaborations\\M Mngwenya\\GeorgeSite\\GeorgeSite\\obj\\",
+      "outputPath": "C:\\Users\\KKW MOKHETHI\\Documents\\Code\\Projects\\Collaborations\\M Mgwenya\\GeorgeSite\\GeorgeSite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
