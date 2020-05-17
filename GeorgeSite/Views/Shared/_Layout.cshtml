@@ -45,37 +45,34 @@
                 }
 
             <!-- Nav Links-->
-            <ul class="navbar-nav ml-auto text-left">
-                @if (User.Identity.IsAuthenticated)
+        <ul class="navbar-nav ml-auto text-left">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="User nav-link text-primary">Welcome, @User.Identity.Name </li>
+                @if (User.IsInRole("Admins"))
                 {
-                    <!-- Common links -->
-                    <li class="User nav-link text-primary">Welcome, @User.Identity.Name </li>
+                    <!-- Admin links -->
+                    <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index" style="color:white">Dashboard</a></li>
+                    <!-- //Admin links -->
+                }
+                else
+                {
+                    <!-- Regular user links-->
                     <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
-                    @if (User.IsInRole("Admins"))
-                    {
-                        <!-- Admin links -->
-                        <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Create" style="color:white">Create</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index" style="color:white">Items</a></li>
-                        <!-- //Admin links -->
-                    }
-                    else
-                    {
-                        <!-- Regular user links-->
-
-                        <!-- //Regular user links-->
-                    }
                     <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>
                     <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
-                    <!-- //Common links -->
+                    <!-- //Regular user links-->
                 }
-
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login" style="color:white">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register" style="color:white">Register</a></li>
-                }
-            </ul>
+            }
+            else
+            {
+                <!-- Visitor links-->
+                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login" style="color:white">Login</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register" style="color:white">Register</a></li>
+                <!-- //Visitor links-->
+            }
+        </ul>
             <!-- //Nav Links-->
         </div>
     </div>
