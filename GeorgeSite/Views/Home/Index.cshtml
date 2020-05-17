@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home";
 }
 <div class="Home">
-    <h1 class="text-center">Welcome to the store</h1>
+    <h1 class="text-center text-white">Welcome to the store</h1>
     <div class="container">
         <div class="card-columns">
             @foreach (var item in Model)
@@ -15,7 +15,7 @@
                         <p class="card-text font-weight-bold">@item.Name</p>
                         <p class="card-text">@item.Description</p>
                         <p>
-                            <a class="btn btn-primary" asp-controller="Customer" asp-action="Cart" asp-route-id="@item.Id" method="get">Add to cart</a>
+                            <a class="btn btn-primary" asp-controller="Customer" asp-action="Cart" asp-route-id="@item.Id" method="get"><i class="fas fa-shopping-cart"></i> Add to cart</a>
                         </p>
                     </div>
                 </div>
