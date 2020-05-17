@@ -47,13 +47,13 @@
     background-color: darkslategrey;
 }
 
-.card img {
+.item img {
     width: 230px;
     padding: 5px;
     transition: 1s;
 }
 
-.card:hover img {
+.item:hover img {
     -webkit-transform: scale(1.1);
 }
 
