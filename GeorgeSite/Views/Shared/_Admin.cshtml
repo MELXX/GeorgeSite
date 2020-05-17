@@ -2,12 +2,29 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link asp-href-include="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link asp-href-include="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link asp-href-include="/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <!--Custom CSS-->
+    <link asp-href-include="/styles/StyleSheetRow.css" rel="stylesheet" />
+
+    <title>@ViewData["Title"] Administartor </title>
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
+    <!-- JavaScript -->
+    <script asp-src-include="lib/jquery/jquery.slim.min.js"></script>
+    <script asp-src-include="lib/popper.js/popper.min.js"></script>
+    <script asp-src-include="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>
