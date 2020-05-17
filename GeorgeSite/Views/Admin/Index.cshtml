@@ -10,8 +10,8 @@
     <p>
         <a class="btn btn-info" asp-action="Create"><i class="fa fa-plus-circle fa-2x"></i> New Item</a>
     </p>
-    <table class="table table-bordered border-info table-hover">
-        <thead class="text-white bg-info">
+    <table class="table-hover">
+        <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
@@ -44,7 +44,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td class="text-white font-weight-bold" style="background-color: grey;">
+                    <td id="ItemName">
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
