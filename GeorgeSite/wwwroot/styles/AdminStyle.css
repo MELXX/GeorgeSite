@@ -24,7 +24,6 @@ body {
     font-size: 20px;
 }
 
-
 .main-menu:hover, nav.main-menu.expanded {
     width: 250px;
     overflow: visible;
@@ -138,4 +137,112 @@ nav {
     font-style: normal;
     font-weight: 300;
     src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+/*TABLE CSS:*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #17a2b8;
+}
+
+#ItemName {
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+}
+
+th {
+    background-color: #17a2b8;
+    color: white;
+    font-weight: bold;
+}
+
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+/* 
+Max width before this PARTICULAR table gets nasty.
+This query will take effect for any screen smaller than 760px.
+*/
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        background-color: #17a2b8;
+        color: white;
+        font-weight: bold;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    tr {
+        border: 1px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        /*
+	Label the data
+	*/
+        td:nth-of-type(1):before {
+            content: "Name";
+        }
+
+        td:nth-of-type(2):before {
+            content: "Category";
+        }
+
+        td:nth-of-type(3):before {
+            content: "Description";
+        }
+
+        td:nth-of-type(4):before {
+            content: "Rating";
+        }
+
+        td:nth-of-type(5):before {
+            content: "OnHand";
+        }
+
+        td:nth-of-type(6):before {
+            content: "Price";
+        }
+
+        td:nth-of-type(7):before {
+            content: "Vendor";
+        }
+
+        td:nth-of-type(8):before {
+            content: "Image";
+        }
 }
