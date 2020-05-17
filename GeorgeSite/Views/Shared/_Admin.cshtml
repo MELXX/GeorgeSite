@@ -18,8 +18,86 @@
     <title>@ViewData["Title"] Administartor </title>
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="row">
+        <div class="col-3">
+            <div class="container">
+                <nav>
+                    <ul class="mcd-menu">
+                        <li>
+                            <a href="">
+                                <i class="fa fa-home"></i>
+                                <strong>Home</strong>
+                                <small>sweet home</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="active">
+                                <i class="fa fa-edit"></i>
+                                <strong>About us</strong>
+                                <small>sweet home</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-gift"></i>
+                                <strong>Features</strong>
+                                <small>sweet home</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-globe"></i>
+                                <strong>News</strong>
+                                <small>sweet home</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-comments-o"></i>
+                                <strong>Blog</strong>
+                                <small>what they say</small>
+                            </a>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-globe"></i>Mission</a></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-group"></i>Our Team</a>
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-female"></i>Leyla Sparks</a></li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-male"></i>Gleb Ismailov</a>
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-leaf"></i>About</a></li>
+                                                <li><a href="#"><i class="fa fa-tasks"></i>Skills</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
+                                <li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-picture-o"></i>
+                                <strong>Portfolio</strong>
+                                <small>sweet home</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-envelope-o"></i>
+                                <strong>Contacts</strong>
+                                <small>drop a line</small>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
     </div>
     <div class="footer text-muted">
         <div class="container text-center">
