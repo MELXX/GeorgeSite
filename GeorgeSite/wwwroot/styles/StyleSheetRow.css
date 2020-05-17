@@ -36,6 +36,10 @@
     background-size: 100% 100%;
 }
 
+.form-control {
+    border: 2px solid #2e8b57;
+}
+
 #card {
     max-width: 540px;
     margin-right: auto;
@@ -44,11 +48,14 @@
     background-color: darkslategrey
 }
 
-.form-control {
-    border: 2px solid #2e8b57;
+.card img {
+    width: 230px;
+    padding: 5px;
+    filter: grayscale(100%);
+    transition: 1s;
 }
 
-input {
-    border: none;
-    border-bottom: 2px solid seagreen;
+.card:hover img {
+    filter: grayscale(0);
+    -webkit-transform: scale(1.1);
 }
