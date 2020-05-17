@@ -45,11 +45,14 @@
     margin-left: auto;
     margin-top: 5%;
     background-color: darkslategrey;
+    /*glow*/
+    -webkit-box-shadow: 0px 0px 30px 0px black;
+    -moz-box-shadow: 0px 0px 30px 0px black;
+    box-shadow: 0px 0px 30px 0px black;
 }
 
 .item img {
     width: 230px;
-    padding: 5px;
     transition: 1s;
 }
 
