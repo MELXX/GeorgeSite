@@ -67,7 +67,6 @@ namespace GeorgeSite.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-
             var v = Repository.ItemRepository.GetById(id);
             return View(v);
         }
@@ -75,10 +74,9 @@ namespace GeorgeSite.Controllers
         [HttpPost]
         public IActionResult Delete(Item item)
         {
-
             Repository.ItemRepository.Delete(item);
             Repository.ItemRepository.Save();
-            return View("Loans");
+            return RedirectToAction("Index", "Admin");
         }
     }
 }
