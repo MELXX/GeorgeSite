@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,19 +21,31 @@ namespace GeorgeSite
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddControllersWithViews();
-            
-            services.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "GeorgeSiteDb.db" };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SqliteConnection(connectionString);
 
+            services.AddTransient<IRepositoryWrapper, RepositoryWrapper>();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+                options.UseSqlite(connection));
+
+             connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "GeorgeSiteIdentityDb.db" };
+             connectionString = connectionStringBuilder.ToString();
+             connection = new SqliteConnection(connectionString);
             services.AddDbContext<IdentityDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
-            
+                options.UseSqlite(connection));
+
+            //services.AddDbContext<AppDbContext>(options =>
+            //    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddDbContext<IdentityDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<IdentityDbContext>()
                     .AddDefaultTokenProviders();

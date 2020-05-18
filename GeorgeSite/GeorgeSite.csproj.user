@@ -11,5 +11,6 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>GeorgeSite.Models.Data.AppDbContext</WebStackScaffolding_DbContextTypeFullName>
+    <NameOfLastUsedPublishProfile>egiftcardsworldwide - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
