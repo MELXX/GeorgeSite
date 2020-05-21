@@ -1,0 +1,67 @@
+﻿.parent-wrapper {
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.parent {
+    display: flex;
+    font-size: 0;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-bottom: -10px;
+}
+
+.child {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(25% - 10px);
+}
+
+    .child:nth-child(even) {
+        margin: 0 10px 10px 10px;
+        background-color: lime;
+    }
+
+    .child:nth-child(odd) {
+        background-color: orange;
+    }
+
+.Welcome {
+    background-image: url(/images/welcome.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.form-control {
+    border: 2px solid #2e8b57;
+}
+
+#card {
+    max-width: 540px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+    background-color: darkslategrey;
+    /*glow*/
+    -webkit-box-shadow: 0px 0px 30px 0px black;
+    -moz-box-shadow: 0px 0px 30px 0px black;
+    box-shadow: 0px 0px 30px 0px black;
+}
+
+.item img {
+    width: 230px;
+    transition: 1s;
+}
+
+.item:hover img {
+    -webkit-transform: scale(1.1);
+}
+
+.Home {
+    background-image: url(/images/gradient.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

@@ -9,6 +9,7 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link asp-href-include="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome-->
     <link asp-href-include="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -16,15 +17,15 @@
     <!--Custom CSS-->
     <link asp-href-include="/styles/StyleSheetRow.css" rel="stylesheet" />
 
-    <title>@ViewData["Title"] GeorgeSite</title>
+    <title>@ViewData["Title"] egiftcardsworldwide</title>
 </head>
 <body>
 
     <div class="navbar navbar-expand-md navbar-dark " style="background-color: black; font-weight: bold; color: white ;">
         <div class="container">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <img src="~/logo.png"
-                     alt="SIXTH SENSE" width="30" height="30" />
+                <img src="~/logo2.png"
+                     alt="egiftcardsworldwide" width="50" height="50" />
             </a>
 
             <!--Hamburger menu-->
@@ -46,34 +47,37 @@
                 }
 
                 <!-- Nav Links-->
-                <ul class="navbar-nav ml-auto text-left">
-                    @if (User.Identity.IsAuthenticated)
+            <ul class="navbar-nav ml-auto text-left">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="User nav-link text-primary">Welcome, @User.Identity.Name </li>
+                    @if (User.IsInRole("Admins"))
                     {
-                        <li class="User nav-link text-primary">Welcome, @User.Identity.Name </li>
-                        @if (User.IsInRole("Admins"))
-                        {
-                            <!-- Admin links -->
-                            <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index" style="color:white">Dashboard</a></li>
-                            <!-- //Admin links -->
-                        }
-                        else
-                        {
-                            <!-- Regular user links-->
-                            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
-                            <!-- //Regular user links-->
-                        }
+                        <!-- Admin links -->
+                        <li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index" style="color:white">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
+
+                        <!-- //Admin links -->
                     }
                     else
                     {
-                        <!-- Visitor links-->
+                        <!-- Regular user links-->
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login" style="color:white">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register" style="color:white">Register</a></li>
-                        <!-- //Visitor links-->
+                        <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Checkout" style="color:white">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout" style="color:white">Logout</a></li>
+                        <!-- //Regular user links-->
                     }
-                </ul>
+                }
+                else
+                {
+                    <!-- Visitor links-->
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index" style="color:white">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login" style="color:white">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Register" style="color:white">Register</a></li>
+                    <!-- //Visitor links-->
+                }
+            </ul>
                 <!-- //Nav Links-->
             </div>
         </div>
@@ -82,13 +86,32 @@
     <div>
         @RenderBody()
     </div>
-    <div class="footer text-muted">
-        <div class="container text-center">
-            &copy; @DateTime.Now.Year.ToString()  - GeorgeSite
+    <style>
+        #footer {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <div class="footer text-muted" id="footer">
+        <div class=" container text-center">
+            &copy; @DateTime.Now.Year.ToString()  - egiftcardsworldwide
         </div>
+        <a asp-controller="Home" asp-action="Index">
+            <img src="~/logo2.png"
+                 alt="egiftcardsworldwide" width="100" height="100" />
+        </a>
+        <p>website designer <a href="Bitsandbytes.xyz">Bitsandbytes.xyz</a>Bitsandbytes.xyz</p>
     </div>
 
     <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
     <script asp-src-include="lib/jquery/jquery.slim.min.js"></script>
     <script asp-src-include="lib/popper.js/popper.min.js"></script>
     <script asp-src-include="lib/bootstrap/js/bootstrap.min.js"></script>
